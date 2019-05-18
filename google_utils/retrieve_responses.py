@@ -8,7 +8,7 @@ import google_utils.get_range as util
 import time
 
 
-def test_retrieve():
+def get_all():
     # If modifying these scopes, delete the file token.pickle.
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
