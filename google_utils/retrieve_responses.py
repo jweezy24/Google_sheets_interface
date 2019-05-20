@@ -10,7 +10,9 @@ import time
 
 def get_all():
     # If modifying these scopes, delete the file token.pickle.
-    SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+    SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly', 'https://www.googleapis.com/auth/drive.scripts',
+    'https://www.googleapis.com/auth/drive.metadata', 'https://www.googleapis.com/auth/drive.photos.readonly', 'https://www.googleapis.com/auth/drive.file',
+    'https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/script.projects', 'https://www.googleapis.com/auth/spreadsheets']
 
     SAMPLE_SPREADSHEET_ID = '1KGkTVz5IVuBdtQie0QBdeHwyHVH41MjFdbpluFsDX6k'
     time.sleep(2)

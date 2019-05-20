@@ -13,7 +13,9 @@ from google.auth.transport.requests import Request
 
 
 def get_range():
-    SCOPES = ['https://www.googleapis.com/auth/script.projects', 'https://www.googleapis.com/auth/spreadsheets']
+    SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly', 'https://www.googleapis.com/auth/drive.scripts',
+    'https://www.googleapis.com/auth/drive.metadata', 'https://www.googleapis.com/auth/drive.photos.readonly', 'https://www.googleapis.com/auth/drive.file',
+    'https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/script.projects', 'https://www.googleapis.com/auth/spreadsheets']
     """Calls the Apps Script API.
     """
     creds = None
