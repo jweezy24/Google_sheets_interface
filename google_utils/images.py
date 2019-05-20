@@ -6,9 +6,10 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly', 'https://www.googleapis.com/auth/drive.scripts',
+'https://www.googleapis.com/auth/drive.metadata', 'https://www.googleapis.com/auth/drive.photos.readonly', 'https://www.googleapis.com/auth/drive.file']
 
-def main():
+def get_picture(pic_id):
     """Shows basic usage of the Drive v3 API.
     Prints the names and ids of the first 10 files the user has access to.
     """
@@ -34,16 +35,19 @@ def main():
     service = build('drive', 'v3', credentials=creds)
 
     # Call the Drive v3 API
-    results = service.files().list(
-        pageSize=10, fields="nextPageToken, files(id, name)").execute()
-    items = results.get('files', [])
+    querey =  "name contains '"+ str(pic_id) + "'"
+    print(querey)
+    pictures = service.files().list(q=querey).execute()
 
-    if not items:
+    print(pictures)
+
+    if not pictures:
         print('No files found.')
     else:
         print('Files:')
-        for item in items:
-            print(u'{0} ({1})'.format(item['name'], item['id']))
+        for pic in pictures['files']:
+            drive_link = u'https://drive.google.com/file/d/{0}/view?usp=sharing'.format(pic['id'])
+        return drive_link
 
 if __name__ == '__main__':
-    main()
+    print(get_picture("IMG_5263"))
